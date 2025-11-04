@@ -1,6 +1,6 @@
-# 🌾 FarmConnect
+# 🐄 FarmConnect
 
-> Bridging the gap between farmers and markets through digital innovation
+> Connecting livestock owners with feed and medicine suppliers through digital innovation
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -8,44 +8,50 @@
 
 ## 📖 About The Project
 
-FarmConnect is a comprehensive platform designed to empower farmers by providing direct market access for their agricultural produce. The application facilitates seamless connections between farmers and buyers, eliminating middlemen and ensuring fair pricing for quality produce.
+FarmConnect is a comprehensive platform designed to bridge the gap between livestock owners and suppliers of feed and medicine. The application facilitates seamless connections, enabling owners to manage their livestock and request supplies while allowing suppliers to list their products and fulfill requests efficiently.
 
 ### ✨ Key Features
 
 - **🔐 User Authentication & Authorization**
-  - Separate registration and login for Farmers and Buyers
+  - Separate registration and login for Owners and Suppliers
   - JWT-based secure authentication
   - Role-based access control
 
-- **👨‍🌾 Farmer Dashboard**
-  - Create and manage product listings
-  - Upload product images
-  - Set prices and available quantities
-  - Track order history
-  - View buyer inquiries
+- **👨‍🌾 Owner Dashboard**
+  - Manage livestock inventory
+  - Create and track supply requests
+  - View available feed and medicine
+  - Provide feedback on suppliers
+  - Track request history
 
-- **🛒 Buyer Dashboard**
-  - Browse available products by category
-  - Advanced search and filtering
-  - Add products to cart
-  - Place orders directly with farmers
-  - Order tracking system
+- **🏪 Supplier Dashboard**
+  - Add and manage feed listings
+  - Add and manage medicine inventory
+  - View and respond to supply requests
+  - Receive customer feedback
+  - Track order fulfillment
 
-- **📦 Product Management**
-  - Multi-category support (Vegetables, Fruits, Grains, etc.)
+- **🐮 Livestock Management**
+  - Add and manage livestock information
+  - Track livestock health and details
+  - View livestock inventory
+
+- **📦 Feed & Medicine Management**
+  - Browse available feed and medicine products
+  - Detailed product information
   - Real-time inventory updates
-  - Product image gallery
-  - Detailed product descriptions
+  - Image gallery for products
 
-- **💬 Communication System**
-  - Direct messaging between farmers and buyers
-  - Inquiry management
-  - Order-related notifications
+- **💬 Request System**
+  - Create supply requests
+  - Track request status
+  - Direct communication between owners and suppliers
+  - Request management and fulfillment
 
-- **📊 Analytics Dashboard**
-  - Sales analytics for farmers
-  - Purchase history for buyers
-  - Market trends visualization
+- **📝 Feedback System**
+  - Rate and review suppliers
+  - View feedback history
+  - Quality assurance through customer reviews
 
 ## 🛠️ Tech Stack
 
@@ -54,9 +60,7 @@ FarmConnect is a comprehensive platform designed to empower farmers by providing
 - **Redux / Redux Toolkit** - State management
 - **React Router** - Client-side routing
 - **Axios** - HTTP client for API calls
-- **Material-UI / Tailwind CSS** - UI component library and styling
-- **React Hook Form** - Form validation
-- **Chart.js / Recharts** - Data visualization
+- **CSS3** - Custom styling
 
 ### Backend
 - **Node.js** - Runtime environment
@@ -66,76 +70,114 @@ FarmConnect is a comprehensive platform designed to empower farmers by providing
 - **JWT** - Authentication and authorization
 - **bcrypt.js** - Password hashing
 - **Multer** - File upload handling
-- **Cloudinary / AWS S3** - Image storage
 
 ### Development Tools
 - **Git** - Version control
 - **ESLint** - Code linting
-- **Prettier** - Code formatting
+- **Babel** - JavaScript compiler
+- **Jest** - Testing framework
 - **Nodemon** - Development server auto-restart
-- **Postman** - API testing
 
-## 🏗️ Architecture
+## 🏗️ Project Structure
 
-### Frontend Architecture
 ```
-frontend/
-├── public/
-│   └── index.html
-├── src/
-│   ├── components/
-│   │   ├── common/          # Reusable components
-│   │   ├── farmer/          # Farmer-specific components
-│   │   └── buyer/           # Buyer-specific components
-│   ├── pages/
-│   │   ├── Home.jsx
-│   │   ├── Login.jsx
-│   │   ├── Register.jsx
-│   │   ├── FarmerDashboard.jsx
-│   │   └── BuyerDashboard.jsx
-│   ├── redux/
-│   │   ├── store.js
-│   │   ├── slices/
-│   │   │   ├── authSlice.js
-│   │   │   ├── productSlice.js
-│   │   │   └── cartSlice.js
-│   ├── services/
-│   │   └── api.js           # API configuration
-│   ├── utils/
-│   │   └── helpers.js
-│   ├── App.js
-│   └── index.js
-└── package.json
-```
-
-### Backend Architecture
-```
-backend/
-├── config/
-│   ├── db.js                # Database configuration
-│   └── cloudinary.js        # Image upload configuration
-├── controllers/
-│   ├── authController.js
-│   ├── productController.js
-│   ├── orderController.js
-│   └── userController.js
-├── models/
-│   ├── User.js
-│   ├── Product.js
-│   └── Order.js
-├── routes/
-│   ├── authRoutes.js
-│   ├── productRoutes.js
-│   ├── orderRoutes.js
-│   └── userRoutes.js
-├── middleware/
-│   ├── auth.js              # Authentication middleware
-│   ├── errorHandler.js
-│   └── upload.js            # File upload middleware
-├── utils/
-│   └── validators.js
-├── server.js
-└── package.json
+farmConnect/
+├── .gitignore
+├── LICENSE
+├── README.md
+├── nodeapp/                    # Backend application
+│   ├── authUtils.js           # Authentication utilities
+│   ├── controllers/           # Business logic controllers
+│   │   ├── feedbackController.js
+│   │   ├── feedController.js
+│   │   ├── liveStockController.js
+│   │   ├── medicineController.js
+│   │   ├── requestController.js
+│   │   └── userController.js
+│   ├── index.js              # Server entry point
+│   ├── middleware/           # Custom middleware
+│   │   └── upload.js
+│   ├── models/               # Database models
+│   │   ├── feedbackModel.js
+│   │   ├── feedModel.js
+│   │   ├── liveStockModel.js
+│   │   ├── medicineModel.js
+│   │   ├── requestModel.js
+│   │   └── userModel.js
+│   └── routers/              # API routes
+│       ├── feedbackRouter.js
+│       ├── feedRouter.js
+│       ├── liveStockRouter.js
+│       ├── medicineRouter.js
+│       ├── requestRouter.js
+│       └── userRouter.js
+├── nodejest/                 # Backend testing
+│   └── run.sh
+├── react/                    # Frontend build scripts
+│   └── react.sh
+└── reactapp/                 # Frontend application
+    ├── .babelrc
+    ├── eslintrc.js
+    ├── file-mock.js
+    ├── style-mock.js
+    ├── public/               # Static assets
+    │   ├── alert.png
+    │   ├── farmconnect.png
+    │   ├── favicon.ico
+    │   ├── index.html
+    │   ├── logo192.png
+    │   ├── logo512.png
+    │   ├── manifest.json
+    │   ├── no_records_found.png
+    │   └── robots.txt
+    └── src/
+        ├── apiConfig.js      # API configuration
+        ├── App.css
+        ├── App.js           # Main application component
+        ├── index.css
+        ├── index.js         # Application entry point
+        ├── store.js         # Redux store configuration
+        ├── userSlice.js     # User state management
+        ├── Components/       # Shared components
+        │   ├── ErrorPage.css
+        │   ├── ErrorPage.jsx
+        │   ├── HomePage.css
+        │   ├── HomePage.jsx
+        │   ├── Login.css
+        │   ├── Login.jsx
+        │   ├── PrivateRoute.jsx
+        │   ├── Signup.css
+        │   └── Signup.jsx
+        ├── OwnerComponents/  # Owner-specific components
+        │   ├── LivestockForm.css
+        │   ├── LivestockForm.jsx
+        │   ├── MyRequest.css
+        │   ├── MyRequest.jsx
+        │   ├── OwnerFeedback.css
+        │   ├── OwnerFeedback.jsx
+        │   ├── OwnerNavbar.css
+        │   ├── OwnerNavbar.jsx
+        │   ├── OwnerViewFeed.css
+        │   ├── OwnerViewFeed.jsx
+        │   ├── OwnerViewMedicine.css
+        │   ├── OwnerViewMedicine.jsx
+        │   ├── ViewLivestock.css
+        │   └── ViewLivestock.jsx
+        └── SupplierComponents/ # Supplier-specific components
+            ├── AddFeed.css
+            ├── AddFeed.jsx
+            ├── AddMedicine.css
+            ├── AddMedicine.jsx
+            ├── SupplierFeedback.css
+            ├── SupplierFeedback.jsx
+            ├── SupplierNavbar.css
+            ├── SupplierNavbar.jsx
+            ├── ViewFeed.css
+            ├── ViewFeed.jsx
+            ├── ViewMedicine.css
+            ├── ViewMedicine.jsx
+            ├── ViewRequest.css
+            └── ViewRequest.jsx
 ```
 
 ## 🚀 Getting Started
@@ -158,39 +200,36 @@ Before you begin, ensure you have the following installed:
 
 2. **Backend Setup**
    ```bash
-   cd backend
+   cd nodeapp
    npm install
    ```
 
-3. **Create a `.env` file in the backend directory**
+3. **Create a `.env` file in the nodeapp directory**
    ```env
-   PORT=5000
+   PORT=8080
    MONGO_URI=your_mongodb_connection_string
    JWT_SECRET=your_jwt_secret_key
    JWT_EXPIRE=30d
-   CLOUDINARY_CLOUD_NAME=your_cloudinary_name
-   CLOUDINARY_API_KEY=your_cloudinary_api_key
-   CLOUDINARY_API_SECRET=your_cloudinary_api_secret
    NODE_ENV=development
    ```
 
 4. **Start the backend server**
    ```bash
-   npm run dev
-   # OR for production
    npm start
+   # OR for development with nodemon
+   npm run dev
    ```
-   The backend server will run on `http://localhost:5000`
+   The backend server will run on `http://localhost:8080`
 
 5. **Frontend Setup** (Open a new terminal)
    ```bash
-   cd frontend
+   cd reactapp
    npm install
    ```
 
-6. **Create a `.env` file in the frontend directory**
-   ```env
-   REACT_APP_API_URL=http://localhost:5000/api
+6. **Configure API endpoint in `src/apiConfig.js`**
+   ```javascript
+   export const API_URL = 'http://localhost:8080/api';
    ```
 
 7. **Start the frontend development server**
@@ -199,77 +238,34 @@ Before you begin, ensure you have the following installed:
    ```
    The application will open at `http://localhost:3000`
 
-### Running with Docker (Optional)
-
-```bash
-# Build and run with docker-compose
-docker-compose up --build
-
-# Stop containers
-docker-compose down
-```
-
 ## 📱 Usage
 
-### For Farmers
-1. Register as a Farmer with required details
-2. Complete your profile with farm information
-3. Add products with images, descriptions, and pricing
-4. Manage inventory and update availability
-5. Receive and process orders from buyers
-6. Track sales and earnings
+### For Livestock Owners
+1. Register as an Owner with required details
+2. Add and manage your livestock inventory
+3. Browse available feed and medicine from suppliers
+4. Create supply requests for needed items
+5. Track request status and fulfillment
+6. Provide feedback on suppliers
 
-### For Buyers
-1. Register as a Buyer
-2. Browse available products by category
-3. Use filters to find specific items
-4. Add items to cart
-5. Place orders and communicate with farmers
-6. Track order status and delivery
+### For Suppliers
+1. Register as a Supplier
+2. Add feed and medicine products with details
+3. View and manage product inventory
+4. Receive and respond to supply requests
+5. Track fulfilled orders
+6. View customer feedback
 
 ## 🧪 Testing
 
 ```bash
 # Run backend tests
-cd backend
-npm test
+cd nodejest
+./run.sh
 
 # Run frontend tests
-cd frontend
-npm test
-
-# Run integration tests
-npm run test:integration
-
-# Generate coverage report
-npm run test:coverage
-```
-
-## 📦 Deployment
-
-### Backend Deployment (Heroku/Railway/Render)
-```bash
-# Login to your platform
-heroku login
-
-# Create new app
-heroku create farmconnect-api
-
-# Add MongoDB addon or use MongoDB Atlas
-heroku addons:create mongolab
-
-# Deploy
-git push heroku main
-```
-
-### Frontend Deployment (Vercel/Netlify)
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-cd frontend
-vercel --prod
+cd react
+./react.sh
 ```
 
 ## 🤝 Contributing
@@ -281,8 +277,6 @@ We welcome contributions! Here's how you can help:
 3. **Commit your changes** (`git commit -m 'Add some AmazingFeature'`)
 4. **Push to the branch** (`git push origin feature/AmazingFeature`)
 5. **Open a Pull Request**
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
 ### Development Guidelines
 - Follow the existing code style
@@ -311,7 +305,7 @@ See also the list of [contributors](https://github.com/Ritts17/farmConnect/contr
 
 ## 🙏 Acknowledgments
 
-- Inspiration from the need to empower rural farmers
+- Inspiration from the need to streamline livestock supply chain management
 - Thanks to all contributors and supporters
 - Built with ❤️ for the farming community
 
@@ -319,25 +313,25 @@ See also the list of [contributors](https://github.com/Ritts17/farmConnect/contr
 
 - **GitHub Issues**: [Report bugs or request features](https://github.com/Ritts17/farmConnect/issues)
 - **Email**: your.email@example.com
-- **Discord**: [Join our community](https://discord.gg/yourserver)
 
 ## 🗺️ Roadmap
 
-- [x] Basic authentication system
-- [x] Product listing and management
-- [x] Order processing
+- [x] User authentication system
+- [x] Livestock management
+- [x] Feed and medicine listings
+- [x] Request system
+- [x] Feedback system
 - [ ] Payment gateway integration
 - [ ] Mobile application (React Native)
-- [ ] Real-time chat system
-- [ ] Multi-language support
-- [ ] Weather forecasting integration
-- [ ] Price prediction using ML
+- [ ] Real-time notifications
+- [ ] Advanced analytics dashboard
 - [ ] Delivery tracking system
+- [ ] Multi-language support
 
 ## SonarQube
 
 d042574a-e859-4c58-9d86-aeeb23372f94-70ad352c-85b1-4151-823e-0d76251b1329<br/>
-https://sonar.server.examly.io/dashboard?id=iamneo-production-2_d042574a-e859-4c58-9d86-aeeb23372f94-70ad352c-85b1-4151-823e-0d76251b1329&amp;codeScope=overall
+https://sonar.server.examly.io/dashboard?id=iamneo-production-2_d042574a-e859-4c58-9d86-aeeb23372f94-70ad352c-85b1-4151-823e-0d76251b1329&codeScope=overall
 
 ## 📊 Project Status
 
@@ -351,5 +345,5 @@ https://sonar.server.examly.io/dashboard?id=iamneo-production-2_d042574a-e859-4c
 <div align="center">
   Made with ❤️ by the FarmConnect Team
   <br/>
-  <strong>Empowering Farmers, Connecting Communities</strong>
+  <strong>Empowering Livestock Owners, Connecting Suppliers</strong>
 </div>
