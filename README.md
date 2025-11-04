@@ -343,7 +343,7 @@ https://sonar.server.examly.io/dashboard?id=iamneo-production-2_d042574a-e859-4c
 ---
 
 <div align="center">
-  Made with ❤️ by the FarmConnect Team
+  Made with ❤️ by the FarmConnect Team Ritts17 , mannySr
   <br/>
   <strong>Empowering Livestock Owners, Connecting Suppliers</strong>
 </div>
